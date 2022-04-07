@@ -1,0 +1,33 @@
+﻿@model NWClothingCo.Models.Product
+
+@{
+	ViewData["Title"] = "ProductDetails";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ProductDetailsCss{ 
+	<link href="@Url.Content("~/css/ProductDetails.css")" rel="stylesheet" />
+}
+
+<div class="container details-container">
+	<div class="row">
+		<div class="col-lg-5 col-md-12 col-sm-12 img-container">
+			<img src="@("~/Images/ProductImages/" + Model.Image_Name_1)" asp-append-version="true" class="img-fluid product-image"/>
+		</div>
+		<div class="col-lg-7 col-md-12 col-sm-12">
+			<h4 class="product-name">@Model.Product_Name</h4>
+			<span class="fade-effect"></span><br/>
+			<h4>Product Description:</h4>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			</p>
+
+			<h3 style="color: green; font-weight:100">$ @Model.Price</h3>
+
+			<a asp-controller="Store" asp-route-id="@Model.Product_Id" asp-action="Cart" class="btn btn-success btn-lg cart-btn"><i class="fas fa-shopping-cart"></i></a>
+		</div>
+	</div>
+</div>
+
+<br />

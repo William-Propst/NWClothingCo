@@ -1,0 +1,50 @@
+﻿@model NWClothingCo.Models.AccountHelper
+
+@{
+	ViewData["Title"] = "Account Overview";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	var customerOrders = ViewBag.CustomerOrders;
+}
+
+<br/>
+<h2>Account</h2>
+<hr/>
+<div class="container">
+	<div class="row">
+		<div class="col-3">
+			@{
+				await Html.RenderPartialAsync("_AccountNavPartial", Model);
+			}
+		</div>
+		<div class="col-9">
+			<table class="table">
+				<thead>
+					Your Orders
+				</thead>
+				<tbody>
+					<tr>
+						<th>Order Number</th>
+						<th>Order Date</th>
+						<th>Order Total</th>
+						<th>Delivered</th>
+					</tr>
+					@foreach (var order in customerOrders) 
+					{
+						<tr>
+							<td>@order.Order_No</td>
+							<td>@order.Order_Date</td>
+							<td>$@order.Order_Total</td>
+							@if (order.Is_Delivered == false)
+							{
+								<td>No</td>
+							}
+							else { 
+								<td>Yes</td>
+							}
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

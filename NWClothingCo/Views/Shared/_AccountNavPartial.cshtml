@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using NWClothingCo.Areas.Identity.Data
+
+@inject SignInManager<NWClothingCoUser> SignInManager
+@inject UserManager<NWClothingCoUser> UserManager
+
+@model NWClothingCo.Models.AccountHelper
+
+<ul class="nav nav-pills flex-column">
+	@if (Model.page == "INDEX")
+	{
+		<li class="nav-item active"><a class="nav-link active" asp-controller="User" asp-action="Index">Home</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="User" asp-action="CustomerInfo">Customer Information</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="User" asp-action="CustomerOrders">Orders</a></li>
+		@if (Model.role == "ADMIN")
+		{
+			<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index">Admin</a></li>
+		}
+		<li class="nav-item"><a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">Account Settings</a></li>
+	}
+
+	@if (Model.page == "CUSTOMER_ORDERS")
+	{
+		<li class="nav-item"><a class="nav-link" asp-controller="User" asp-action="Index">Home</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="User" asp-action="CustomerInfo">Customer Information</a></li>
+		<li class="nav-item active"><a class="nav-link active" asp-controller="User" asp-action="CustomerOrders">Orders</a></li>
+		@if (Model.role == "ADMIN")
+		{
+			<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index">Admin</a></li>
+		}
+		<li class="nav-item"><a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">Account Settings</a></li>
+	}
+</ul>

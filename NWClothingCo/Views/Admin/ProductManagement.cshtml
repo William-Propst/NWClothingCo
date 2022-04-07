@@ -1,0 +1,170 @@
+﻿@model NWClothingCo.Models.Product
+
+@{
+	ViewData["Title"] = "Store";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	var products = ViewBag.products;
+	var categories = ViewBag.categories;
+	string page = "PRODUCT_MANAGEMENT";
+}
+
+<br/>
+<h1>Admin</h1>
+<hr />
+<div class="row">
+	<div class="col-3">
+		@{
+			await Html.RenderPartialAsync("_AdminNavPartial", page);
+		}
+	</div>
+	<div class="col-9">
+		<h2>Add Product</h2>
+		<hr />
+		<form asp-action="ProductManagement">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="row">
+				<div class="col-6">
+					<div class="form-group">
+						<label asp-for="Product_Name"></label>
+						<input asp-for="Product_Name" class="form-control" />
+						<span asp-validation-for="Product_Name" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-group">
+						<label asp-for="Product_Desc"></label>
+						<input asp-for="Product_Desc" class="form-control" />
+						<span asp-validation-for="Product_Desc" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-4">
+					<div class="form-group">
+						<label asp-for="Image_Title_1"></label>
+						<input asp-for="Image_Title_1" class="form-control" />
+						<span asp-validation-for="Image_Title_1" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Image_File_1"></label>
+						<input asp-for="Image_File_1" accept="image/*" />
+						<span asp-validation-for="Image_File_1" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="form-group">
+						<label asp-for="Image_Title_2"></label>
+						<input asp-for="Image_Title_2" class="form-control" />
+						<span asp-validation-for="Image_Title_2" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Image_File_2"></label>
+						<input asp-for="Image_File_2" accept="image/*" />
+						<span asp-validation-for="Image_File_2" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="form-group">
+						<label asp-for="Image_Title_3"></label>
+						<input asp-for="Image_Title_3" class="form-control" />
+						<span asp-validation-for="Image_Title_3" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Image_File_3"></label>
+						<input asp-for="Image_File_3" accept="image/*" />
+						<span asp-validation-for="Image_File_3" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-4">
+					<div class="form-group">
+						<label asp-for="Price"></label>
+						<input asp-for="Price" class="form-control" />
+						<span asp-validation-for="Price" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="form-group">
+						<label asp-for="Stock"></label>
+						<input asp-for="Stock" class="form-control" />
+						<span asp-validation-for="Stock" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="form-group">
+						<label asp-for="Size"></label>
+						<input asp-for="Size" class="form-control" />
+						<span asp-validation-for="Size" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<div class="form-group">
+						<label asp-for="Category"></label>
+						<select class="form-control" asp-for="Category">
+							<option value="Hats">Hats</option>
+							<option value="Outerwear">Outerwear</option>
+							<option value="Shirts">Shirts</option>
+							<option value="Pants">Pants</option>
+							<option value="Undergarments">Undergarments</option>
+							<option value="Shoes">Shoes</option>
+						</select>
+						<span asp-validation-for="Category" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="form-group row">
+				<div class="col-5 row">
+					<div class="col">
+						<input class="btn btn-primary" type="submit" value="Add Product" />
+					</div>
+				</div>
+			</div>
+			<div class="col-4"></div>
+		</form>
+
+		<br />
+		<hr />
+
+		<div class="row">
+			<div class="col-12">
+				<h2>Edit Products</h2>
+				<br />
+				<table class="table">
+					<tr>
+						<th>Product Name</th>
+						<th>Product Description</th>
+						<th>Product Price</th>
+						<th>Product Stock</th>
+						<th>Size</th>
+						<th>Category</th>
+						<th></th>
+					</tr>
+					@foreach (var p in products)
+					{
+						<tr>
+							<td>@p.Product_Name</td>
+							<td>@p.Product_Desc</td>
+							<td>@p.Price</td>
+							<td>@p.Stock</td>
+							<td>@p.Size</td>
+							@foreach (var c in categories)
+							{
+								@if (c.Category_Id == p.Category_Id)
+								{
+									<td>@c.Category_Name</td>
+								}
+							}
+							<td><a asp-controller="Admin" asp-action="EditProduct" asp-route-id="@p.Product_Id" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
+						</tr>
+					}
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

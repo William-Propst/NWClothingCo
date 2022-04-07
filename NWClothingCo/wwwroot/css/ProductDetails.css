@@ -1,0 +1,58 @@
+﻿.fade-effect {
+	display: block;
+	border: none;
+	color: white;
+	height: 1px;
+	background: black;
+	background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from(#000), to(#fff));
+}
+
+.product-name {
+	text-align: center;
+}
+
+img.product-image {
+	box-shadow: 0.5rem 0.5rem #8920c8, -0.5rem -0.5rem #ccc;
+	width: 250px;
+	height: 250px;
+	margin: 20px;
+}
+
+.container {
+	padding: 20px;
+}
+
+.details-container {
+	margin: auto;
+	padding: 20px;
+	width: 80%;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.cart-btn {
+	padding: 0 30px;
+}
+
+@media (max-width: 980px) {
+	img.product-image {
+		margin-left: 125px;
+	}
+}
+
+@media (max-width: 800px) {
+	img.product-image {
+		width: 300px;
+		height: 300px;
+		margin: 5px 30px 20px 30px;
+	}
+}
+
+@media (max-width:500px) {
+	img.product-image {
+		width: 200px;
+		height: 200px;
+		margin: 5px 45px 20px 45px;
+	}
+}
+
+

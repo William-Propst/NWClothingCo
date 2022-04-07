@@ -1,0 +1,23 @@
+﻿@model NWClothingCo.Models.AccountHelper
+
+@{
+	ViewData["Title"] = "Account Overview";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br/>
+
+<div class="container">
+	<h1>Account</h1>
+	<hr/>
+	<div class="row">
+		<div class="col-3">
+			@{
+				await Html.RenderPartialAsync("_AccountNavPartial", Model);
+			}
+		</div>
+		<div class="col-9">
+
+		</div>
+	</div>
+</div>

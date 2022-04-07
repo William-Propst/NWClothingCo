@@ -1,0 +1,96 @@
+﻿/*Styling for store page*/
+.shop-container {
+	background: #ccc;
+	padding: 30px 20px 20px 20px;
+}
+
+.product-card {
+	width: 300px;
+	border: solid #2a2929;
+}
+
+.product-body {
+	background-image: linear-gradient(-90deg, #8920c8, #bf8edd);
+	text-align: center;
+	color: #ffffff;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.cart {
+	padding: 0 95px;
+}
+
+.cart-link {
+	margin-top: 15px;
+}
+
+/*Styling for product card main link*/
+.product-link {	
+	color: #fff;
+
+}
+
+	.product-link:hover {
+		color: #ccc;
+	}
+
+/*Styling for product image and overlay*/
+.product-img-container {
+	position: relative;
+}
+
+.product-image{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: .4s ease;
+	background-color: #2a2929;
+}
+
+.product-img-container:hover .overlay {
+	opacity: .85;
+}
+
+.overlay-text {
+	position: absolute;
+	color: #ffffff;
+	font-size: 30px;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.overlay-link {
+	color: #fff;
+	text-decoration: none;
+}
+
+	.overlay-link:hover {
+		color: #ccc;
+	}
+
+
+
+
+/*Styling for the cart*/
+.cart-img {
+	width: 75px;
+	height: 75px;
+	border: solid #8920c8;
+}
+

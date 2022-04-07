@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using NWClothingCo.Areas.Identity.Data
+
+@inject SignInManager<NWClothingCoUser> SignInManager
+@inject UserManager<NWClothingCoUser> UserManager
+
+@model string
+
+<ul class="nav nav-pills flex-column">
+	@if (Model == "HOME")
+	{
+		<li class="nav-item active"><a class="nav-link active" asp-controller="Admin" asp-action="Index">Home</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="ProductManagement">Product Management</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="UserManagement">User Management</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="OrderManagement">Order Management</a></li>
+	}
+
+	@if (Model == "PRODUCT_MANAGEMENT")
+	{
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index">Home</a></li>
+		<li class="nav-item active"><a class="nav-link active" asp-controller="Admin" asp-action="ProductManagement">Product Management</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="UserManagement">User Management</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="OrderManagement">Order Management</a></li>
+	}
+
+	@if (Model == "USER_MANAGEMENT")
+	{
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index">Home</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="ProductManagement">Product Management</a></li>
+		<li class="nav-item active"><a class="nav-link active" asp-controller="Admin" asp-action="UserManagement">User Management</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="OrderManagement">Order Management</a></li>
+	}
+
+	@if (Model == "ORDER_MANAGEMENT")
+	{
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="Index">Home</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="ProductManagement">Product Management</a></li>
+		<li class="nav-item"><a class="nav-link" asp-controller="Admin" asp-action="UserManagement">User Management</a></li>
+		<li class="nav-item active"><a class="nav-link active" asp-controller="Admin" asp-action="OrderManagement">Order Management</a></li>
+	}
+</ul>
+
+<br/>
+<br />
+
+<a class="btn btn-primary btn-block" asp-controller="User" asp-action="Index"><i class="fas fa-sign-out-alt"></i></a>

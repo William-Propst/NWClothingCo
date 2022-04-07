@@ -1,0 +1,35 @@
+﻿@model IEnumerable<NWClothingCo.Models.Product>
+
+@{
+	ViewData["Title"] = "Store";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section StoreCss{
+	<link href="@Url.Content("~/css/Store.css")" rel="stylesheet" />
+}
+
+<div class="shop-container">
+	@foreach (var product in Model)
+	{
+	<div class="card product-card">
+		<div class="product-img-container">
+			<img src="@("~/Images/ProductImages/" + product.Image_Name_1)" asp-append-version="true" class="card-img-top product-image" />
+			<div class="overlay">
+				<div class="overlay-text">
+					<a asp-controller="Store" asp-route-id="@product.Product_Id" asp-action="ProductDetails" class="overlay-link"><i class="far fa-eye"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a asp-controller="Store" asp-route-id="@product.Product_Id" asp-action="Cart" class="overlay-link"><i class="fas fa-shopping-cart"></i></a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="card-body product-body">
+			<a asp-controller="Store" asp-route-id="@product.Product_Id" asp-action="ProductDetails"
+			   class="card-link product-link">@product.Product_Name &nbsp;-&nbsp; <span class="price">$@product.Price</span></a>
+			<br/>
+			<a asp-controller="Store" asp-route-id="@product.Product_Id"  asp-action="Cart" class="btn btn-success cart-link"><i class="fas fa-shopping-cart cart"></i></a>
+		</div>
+		
+	</div>
+	}
+</div>
